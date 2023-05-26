@@ -1,0 +1,53 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #FFEEDB;
+}
+
+img {
+    width: 300px;
+    animation: rotation 6s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#title {
+    color: #000022;
+    margin: auto;
+    text-align: center;
+}
+
+#titleWebsite {
+    font-size: 40px;
+    font-style: italic;
+}
+
+
+#first {
+    text-align: left;
+    width: 75%;
+    padding: 0em 2em;
+}
+
+#bio {
+    font-size: 25px;
+    font-style: italic;
+}
+
+#genRandCapy {
+    border: 5px solid;
+    display: flex;
+    justify-content: center;
+}

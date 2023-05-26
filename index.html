@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+        capys and cats for matt
+    </title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- CSS Connection-->
+    <link rel="stylesheet" href="edits.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div id="title">
+        <h1 id="titleWebsite">
+            capys and cats for matt
+            <img id="img" src="capybara.gif" width="400" height="300" />
+
+        </h1>
+    </div>
+    <div id="first">
+        <h1 id="bio">
+            hi matt. happy 19th birthday. i hope that this might bring you some
+            hapiness if you're ever feeling bored! i love you!
+        </h1>
+    </div>
+
+    <!-- FOR THE API CALLS -->
+    <!--Generating a random capybara-->
+    <button id="genRandCapy">Generate Random Capy</button>
+    <div id="capys"></div>
+    <script>
+        const genRandCapy = document.getElementById("genRandCapy");
+        const capys = document.getElementById("capys")
+
+        function showRandCapy() {
+            capys.innerHTML = ""; //clear the previous photos 
+            // GET request 
+            fetch("https://api.capy.lol/v1/capybara", { mode: 'cors' })
+                .then(response => response.json())
+                .then(data => {
+                    // creates a img element to set the new src 
+                    const imgElm = document.createElement("img");
+                    imgElm.src = data.url;
+                    imgElm.alt = "Random Capybara Picture";
+
+                    //clear the previous picture 
+                    capys.appendChild(imgElm);
+                })
+                .catch(error => {
+                    console.error("Failed to get Capy picture", error);
+                });
+        }
+
+        genRandCapy.addEventListener("click", showRandCapy);
+    </script>
+
+    <!-- <button id="genRandCapy">Generate Capy</button>
+    <div id="capys"></div>
+    <script>
+        const randCapyBtn = document.getElementById("genRandCapy");
+        const pictureContainer = document.getElementById("capys");
+
+        function randomCapy() {
+            pictureContainer.innerHTML = "";
+            const imgUrl = "https://api.capy.lol/v1/capybara";
+            const imgEl = document.createElement("img");
+            imgEl.src = imgUrl;
+            imgEl.alt = "Random capybara picture";
+            pictureContainer.innerHTML = "";
+            pictureContainer.appendChild(imgEl);
+        }
+
+        randCapyBtn.addEventListener("click", randomCapy);
+    </script> -->
+
+
+
+
+
+</body>
+
+</html>
