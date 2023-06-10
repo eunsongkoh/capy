@@ -10,7 +10,16 @@ body {
 
 img {
     width: 300px;
-    animation: rotation 6s infinite linear;
+}
+
+#img1 {
+    width: 300px;
+    animation: rotation 2s infinite linear;
+}
+
+#img2 {
+    width: 300px;
+    animation: rotation 4s infinite linear;
 }
 
 @keyframes rotation {
@@ -46,8 +55,26 @@ img {
     font-style: italic;
 }
 
-#genRandCapy {
-    border: 5px solid;
-    display: flex;
+#genRandCat {
+    width: 200px;
+    height: 30px;
+}
+
+#cats {
+    right: 30px;
+}
+
+#capybaras {
     justify-content: center;
+    display: flex;
+}
+
+#catss {
+    justify-content: center;
+    display: flex;
+}
+
+#genRandCapy {
+    width: 200px;
+    height: 30px;
 }

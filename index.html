@@ -24,7 +24,8 @@
     <div id="title">
         <h1 id="titleWebsite">
             capys and cats for matt
-            <img id="img" src="capybara.gif" width="400" height="300" />
+            <img id="img1" src="capybara.gif" width="400" height="300" />
+            <img id="img2" src="cat.gif" width="400" height="300" />
 
         </h1>
     </div>
@@ -36,60 +37,59 @@
     </div>
 
     <!-- FOR THE API CALLS -->
-    <!--Generating a random capybara-->
-    <!-- <button id="genRandCapy">Generate Random Capy</button>
-    <div id="capys"></div>
-    <script>
-        const genRandCapy = document.getElementById("genRandCapy");
-        const capys = document.getElementById("capys")
+    <div id="capybaras">
+        <button id="genRandCapy">Generate Capy</button>
+        <div id="capys">
+            <script>
+                const randCapyBtn = document.getElementById("genRandCapy");
+                const pictureContainer = document.getElementById("capys");
 
-        function showRandCapy() {
-            capys.innerHTML = ""; //clear the previous photos 
-            // GET request 
-            fetch("https://api.capy.lol/v1/capybara", { mode: 'cors' })
-                .then(response => response.json())
-                .then(data => {
-                    // creates a img element to set the new src 
-                    const imgElm = document.createElement("img");
-                    imgElm.src = data.url;
-                    imgElm.alt = "Random Capybara Picture";
+                function randomCapy() {
+                    pictureContainer.innerHTML = "";
+                    const randomQueryParam = Math.random().toString(36).substr(2); // Generate a random query parameter
+                    const imgUrl = `https://api.capy.lol/v1/capybara?random=${randomQueryParam}`;
+                    const imgEl = document.createElement("img");
+                    imgEl.src = imgUrl; //specifies the url of the image to be displayed 
+                    imgEl.alt = "Random capybara picture"; //sets the attribute 
+                    pictureContainer.appendChild(imgEl); //adds the image into the empty container
+                }
 
-                    //clear the previous picture 
-                    capys.appendChild(imgElm);
-                })
-                .catch(error => {
-                    console.error("Failed to get Capy picture", error);
-                });
-        }
+                randCapyBtn.addEventListener("click", randomCapy);
+            </script>
+        </div>
+    </div>
 
-        genRandCapy.addEventListener("click", showRandCapy);
-    </script> -->
+    <div id="catss">
+        <button id="genRandCat">Generate Kitty</button>
+        <div id="cats">
+            <script>
+                const randCatBton = document.getElementById("genRandCat");
+                const pictureContainer2 = document.getElementById("cats");
 
-    <button id="genRandCapy">Generate Capy</button>
-    <div id="capys"></div>
-    <script>
-        const randCapyBtn = document.getElementById("genRandCapy");
-        const pictureContainer = document.getElementById("capys");
+                function randomCat() {
+                    pictureContainer2.innerHTML = "";
+                    const url = "https://api.thecatapi.com/v1/images/search";
 
-        function randomCapy() {
-            pictureContainer.innerHTML = "";
-            const imgUrl = "https://api.capy.lol/v1/capybara";
-            const imgEl = document.createElement("img");
-            imgEl.src = imgUrl;
-            imgEl.alt = "Random capybara picture";
-            pictureContainer.innerHTML = "";
-            pictureContainer.appendChild(imgEl);
-        }
+                    fetch(url, {
+                        method: "GET",
+                        headers: {
+                            "x-api-key": "live_nyke1yOctWrT4mOyX4WcZfCeDZTC6ZuvoBWbjrHEB5U1yQixSLBzVVFxc2qYqgIh"
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            const imageUrl = data[0].url;
+                            const imgElement = document.createElement("img");
+                            imgElement.src = imageUrl;
+                            imgElement.alt = "Random Cat Picture";
+                            pictureContainer2.appendChild(imgElement)
+                        });
+                }
 
-        randCapyBtn.addEventListener("click", randomCapy);
-    </script>
+                randCatBton.addEventListener("click", randomCat);
 
-    <button id="genRandCat">Generate Kitty</button>
-    <div id="cats">
-        <script>
-            
-
-        </script>
+            </script>
+        </div>
     </div>
 
 
